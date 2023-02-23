@@ -48,7 +48,7 @@
                 <div class="d-flex">
                     <!-- Brand -->
                     <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="{{ base_url('/') }}">
-                        <b>Toko</b>ABC
+                        <b>Shop</b>Sooner
                     </a>
                     {{-- <ul class="navbar-nav w-auto my-auto d-none d-sm-flex">
                         
@@ -167,7 +167,7 @@
                                 <i class="fas fa-gem me-3"></i>ShopSooner
                             </h6>
                             <p>
-                                Selamat Datang di Toko ABC, dan silahkan berbelanja hingga puas!
+                                Selamat Datang di ShopSooner, dan silahkan berbelanja hingga puas!
                             </p>
                         </div>
                         <!-- Grid column -->
