@@ -67,18 +67,15 @@
                             </div>
                             <div class="mb-3"></div>
                             <p>{{ $data['deskripsi'] }}</p>
-                            <div class="d-inline">
+                            <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Add to
                                     Cart</button>
-                                <a href="{{ base_url('/') }}" class="btn btn-primary">
+                                <a href="{{ base_url('/') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i>
                                     Back</a>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer">
-
             </div>
         </div>
     </div>

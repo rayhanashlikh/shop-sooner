@@ -77,9 +77,7 @@
                                 <input type="hidden" name="total_jumlah" value="{{ $total_jumlah }}" style="display:none">
                                 <input type="hidden" name="total_harga" value="{{ $total_harga }}" style="display:none">
                                 <input type="hidden" name="total_berat" value="{{ $total_berat }}" style="display:none">
-                                <div class="col-xl-9">
-                                </div>
-                                <div class="col-xl-3">
+                                <div class="d-flex justify-content-end">
                                     <div class="btn-group">
                                         <a href="{{ base_url('/') }}" class="btn btn-primary text-capitalize"><i
                                                 class="fa fa-arrow-left"></i> Lanjut Belanja</a>
@@ -104,8 +102,10 @@
             console.log(id);
             $.ajax({
                 method: 'POST',
-                url: '<?= base_url("cart/delete") ?>',
-                data: {rowid: id},
+                url: '<?= base_url('cart/delete') ?>',
+                data: {
+                    rowid: id
+                },
                 dataType: 'json',
                 success: function(data) {
                     alert('Something went wrong');

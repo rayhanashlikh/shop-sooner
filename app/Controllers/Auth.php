@@ -65,7 +65,8 @@ class Auth extends BaseController
         $validation->setRules([
             'nama' => 'required',
             'username' => 'required|is_unique[users.id, users.username]',
-            'password' => 'required|min_length[6]'
+            'password' => 'required|min_length[6]',
+            'password_confirmation' => 'required|matches[password]|min_length[6]',
         ]);
         $isValid = $validation->withRequest($this->request)->run();
         // dd(password_hash($this->request->getPost('password'), PASSWORD_DEFAULT));

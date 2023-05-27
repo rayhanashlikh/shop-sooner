@@ -57,14 +57,15 @@
                 <!-- Left elements -->
 
                 <!-- Center elements -->
+                {{-- {{ dd(url_is('order')) }} --}}
                 <ul class="navbar-nav flex-row d-none d-md-flex">
                     <li class="nav-item me-3 me-lg-1">
-                        <a class="nav-link active" href="{{ base_url('/') }}">
+                        <a class="nav-link {{ (url_is('') || url_is('detail*')) ? 'active' : '' }}" href="{{ base_url('/') }}">
                             Home
                         </a>
                     </li>
                     <li class="nav-item me-3 me-lg-1">
-                        <a class="nav-link" href="{{ base_url('order') }}">
+                        <a class="nav-link {{ (url_is('order')) ? 'active' : '' }}" href="{{ base_url('order') }}">
                             Riwayat Pemesanan
                         </a>
                     </li>
@@ -108,7 +109,7 @@
                                 aria-expanded="false">
                                 <img src="https://0.gravatar.com/avatar/efed8ada19db5ae4e8c771cdf5d25253?s=32&amp;d=mm&amp;r=g&amp;s=24"
                                     class="avatar avatar-24 photo rounded-circle">
-                                <strong class="d-none d-sm-block ms-1">{{ session()->get('nama') }}</strong>
+                                <strong class="d-none d-sm-block ms-1">Halo, {{ explode(' ', trim(session()->get('nama')))[0] }}!</strong>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                 <li>

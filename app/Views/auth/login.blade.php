@@ -38,15 +38,18 @@
                                             <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                                             <!-- Email input -->
                                             <div class="form-outline mb-4">
-                                                <input type="text" id="username" name="username" class="form-control" value="{{ old('username') }}" />
+                                                <input type="text" id="username" name="username" class="form-control"
+                                                    value="{{ old('username') }}" />
                                                 <label class="form-label" for="username"> Username atau Alamat Email</label>
                                             </div>
 
                                             <!-- Password input -->
-                                            <div class="form-outline mb-4">
+                                            <div class="form-outline mb-4 input-group">
                                                 <input type="password" id="password" name="password"
                                                     class="form-control" />
                                                 <label class="form-label" for="password">Password</label>
+                                                <span id="togglePassword" class="input-group-text"><i id="eye-pass"
+                                                        class="fas fa-eye"></i></span>
                                             </div>
 
                                             @if (session()->getFlashdata('msg'))
@@ -81,4 +84,21 @@
         </div>
 
     </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#togglePassword").click(function() {
+                // console.log('test1');
+                $(this).find("#eye-pass").toggleClass("fa-eye fa-eye-slash");
+                var input = $("#password");
+                if (input.attr("type") === "password") {
+                    input.attr("type", "text");
+                } else {
+                    input.attr("type", "password");
+                }
+            });
+        })
+    </script>
 @endsection

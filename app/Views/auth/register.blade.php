@@ -29,36 +29,52 @@
                             dd($cek);
                             @endphp --}}
                             <div class="row d-flex justify-content-center">
-                                <div class="col-lg-8">
+                                <div class="col-lg-10">
                                     <h2 class="fw-bold mb-5">Registrasi User</h2>
                                     <form action="{{ base_url('register') }}" method="post">
-                                        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>"/>
+                                        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                                         <!-- 2 column grid layout with text inputs for the first and last names -->
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="nama" name="nama" class="form-control" value="{{old('nama')}}" />
+                                            <input type="text" id="nama" name="nama" class="form-control"
+                                                value="{{ old('nama') }}" />
                                             <label class="form-label" for="nama">Nama Lengkap</label>
                                         </div>
-    
+
                                         <!-- Email input -->
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="username" name="username" class="form-control" value="{{old('username')}}">
+                                            <input type="text" id="username" name="username" class="form-control"
+                                                value="{{ old('username') }}">
                                             <label class="form-label" for="username">Username atau Alamat Email</label>
                                         </div>
-    
+
                                         <!-- Password input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="password" name="password" class="form-control" value="{{old('password')}}"/>
+                                        <div class="form-outline mb-4 input-group">
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                value="{{ old('password') }}" />
                                             <label class="form-label" for="password">Password</label>
+                                            <span id="togglePassword" class="input-group-text"><i
+                                                    id="eye-pass" class="fas fa-eye"></i></span>
                                         </div>
-    
+
+                                        <!-- Password confirmation -->
+                                        <div class="form-outline mb-4 input-group">
+                                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                                class="form-control" value="{{ old('password_confirmation') }}" />
+                                            <label class="form-label" for="password_confirmation">Konfirmasi
+                                                Password</label>
+                                            <span id="togglePasswordConfirm" class="input-group-text"><i
+                                                 id="eye-pass-conf" class="fas fa-eye"></i></span>
+                                        </div>
+
                                         <!-- Submit button -->
                                         <button type="submit" class="btn btn-primary btn-block mb-4">
                                             Sign up
                                         </button>
-    
+
                                         <!-- Register buttons -->
                                         <div class="text-center">
-                                            <p>Sudah memiliki akun?<a href="{{ base_url('login') }}"> Login Sekarang! </a></p>
+                                            <p>Sudah memiliki akun?<a href="{{ base_url('login') }}"> Login Sekarang! </a>
+                                            </p>
                                         </div>
                                     </form>
                                 </div>
@@ -71,4 +87,34 @@
         </div>
     </section>
     <!-- Section: Design Block -->
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Show the password on click
+            $("#togglePassword").click(function() {
+                // console.log('test1');
+                $(this).find("#eye-pass").toggleClass("fa-eye fa-eye-slash");
+                var input = $("#password");
+                if (input.attr("type") === "password") {
+                    input.attr("type", "text");
+                } else {
+                    input.attr("type", "password");
+                }
+            });
+
+            // Show the password confirm on click
+            $("#togglePasswordConfirm").click(function() {
+                // console.log('test2');
+                $(this).find("#eye-pass-conf").toggleClass("fa-eye fa-eye-slash");
+                var input = $("#password_confirmation");
+                if (input.attr("type") === "password") {
+                    input.attr("type", "text");
+                } else {
+                    input.attr("type", "password");
+                }
+            });
+        })
+    </script>
 @endsection
